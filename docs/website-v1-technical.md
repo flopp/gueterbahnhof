@@ -44,7 +44,8 @@ provider. The generator should return a non-zero exit status for invalid flags,
 unreadable content, invalid data, missing assets, or write failures.
 
 The Makefile provides `make` to build the generator, `make run` to generate
-the site with verbose output, and `make test` to run `go test ./...`.
+the site and serve it locally at `http://127.0.0.1:8000/` using Python's
+built-in HTTP server, and `make test` to run `go test ./...`.
 
 ## Content model
 
