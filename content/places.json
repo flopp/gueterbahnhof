@@ -21,6 +21,16 @@
         "latitude": 48.0132066,
         "longitude": 7.8486772
       }
+    },
+    {
+      "slug": "newgoel-market",
+      "name": "Newgöl Market",
+      "category": "Lebensmittel",
+      "address": "Zollhallenstraße 14, 79106 Freiburg",
+      "coordinates": {
+        "latitude": 48.0128003,
+        "longitude": 7.8486546
+      }
     }
   ]
 }
