@@ -25,18 +25,26 @@ content/places.json  source of truth for place entries
 data/gueterbahnhof.geojson  neighborhood boundary supplied for the map
 templates/           shared layout and page templates
 static/               CSS, images, map, and other copied assets
+static/vendor/leaflet/ pinned, self-hosted Leaflet distribution and license
 .output/              generated site (build output; not source content)
 ```
 
-Keep the existing `-output` flag for the output directory and `-verbose` for
-useful build progress. The generator should return a non-zero exit status for
-invalid flags, unreadable content, invalid data, missing assets, or write
-failures.
+The initial `content/places.json` may be an empty list until verified place
+information is collected; the site must render clear German empty states rather
+than invented listings. Add places by editing that file and placing referenced
+images under `static/`.
 
-The current Makefile already provides `make` to build the generator and
-`make run` to run it with verbose output and the default output path. Keep
-those entry points aligned with the generator as it grows. Add a test target
-when useful, and use `go test ./...` as the canonical test command.
+The generator supports `-output`, `-content`, `-boundary`, `-templates`,
+`-static`, `-base-path`, `-tile-url`, `-tile-attribution`,
+`-tile-attribution-url`, and `-verbose`. Paths are resolved from the current
+working directory. `-base-path` supports publication under a URL prefix, and
+`-tile-url` selects an HTTPS OpenStreetMap-compatible tile URL template.
+Attribution text and its HTTPS link can be configured for the selected tile
+provider. The generator should return a non-zero exit status for invalid flags,
+unreadable content, invalid data, missing assets, or write failures.
+
+The Makefile provides `make` to build the generator, `make run` to generate
+the site with verbose output, and `make test` to run `go test ./...`.
 
 ## Content model
 
@@ -131,8 +139,8 @@ Generate output paths such as:
 .output/places/<slug>/index.html
 .output/map/index.html
 .output/data/gueterbahnhof.geojson
-.output/css/site.css
-.output/images/...
+.output/static/css/site.css
+.output/static/images/...
 ```
 
 Directory-style routes are convenient on static hosts that serve `index.html`
@@ -145,8 +153,9 @@ changes.
 
 - Use shared layout and partial templates to keep navigation and metadata
   consistent.
-- Self-host a pinned Leaflet release and its CSS/assets rather than depending
-  on a third-party JavaScript CDN. Load the map code only on the map page.
+- Self-host the pinned Leaflet 1.9.4 release and its CSS/assets rather than
+  depending on a third-party JavaScript CDN. Load the map code only on the map
+  page.
 - Use an OpenStreetMap-based tile service for interactive tiles. Make its URL
   configurable without rebuilding templates, and follow that provider's
   current usage policy, caching requirements, and attribution rules. Do not

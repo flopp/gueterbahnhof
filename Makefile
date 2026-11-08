@@ -1,4 +1,4 @@
-.PHONY: all clean
+.PHONY: all clean run test
 
 all: 
 	go build -o bin/generator ./cmd/generator
@@ -8,3 +8,6 @@ clean:
 
 run:
 	@go run ./cmd/generator --verbose --output ./.output
+
+test:
+	go test ./...

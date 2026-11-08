@@ -1,0 +1,33 @@
+{{define "places-content"}}
+<section class="page-hero">
+  <p class="eyebrow"><span class="eyebrow-dot"></span> DAS QUARTIER AUF EINEN BLICK</p>
+  <h1>Orte im<br><em>Güterbahnhof.</em></h1>
+  <p>Entdecke Geschäfte, Gastronomie und Angebote direkt im Quartier.</p>
+  <a class="text-link" href="{{.BasePath}}/map/">Oder direkt auf der Karte ansehen <span aria-hidden="true">→</span></a>
+</section>
+<section class="directory">
+  {{if .Groups}}
+    {{range .Groups}}
+    <section class="category-group">
+      <div class="category-heading"><h2>{{.Name}}</h2><span>{{.CountLabel}}</span></div>
+      <div class="directory-list">
+        {{range .Places}}
+        <a class="directory-item" href="{{.URL}}">
+          <span class="directory-index">{{.Index}}</span>
+          <span class="directory-info"><strong>{{.Name}}</strong><span>{{.Address}}</span></span>
+          <span class="directory-category">{{.Category}}</span>
+          <span class="directory-arrow" aria-hidden="true">↗</span>
+        </a>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+  {{else}}
+  <div class="empty-state directory-empty">
+    <span class="empty-symbol" aria-hidden="true">✳</span>
+    <div><h2>Die ersten Orte kommen bald.</h2><p>Wir sammeln gerade verlässliche Informationen zu den Angeboten im Quartier. Bis dahin kannst du dir auf der Karte einen Überblick verschaffen.</p></div>
+    <a href="{{.BasePath}}/map/" class="button button-dark">Karte ansehen <span aria-hidden="true">↗</span></a>
+  </div>
+  {{end}}
+</section>
+{{end}}

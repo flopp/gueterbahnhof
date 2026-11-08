@@ -1,0 +1,65 @@
+{{define "home-content"}}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-dot"></span> Freiburg · im Wandel</p>
+    <h1>Das Quartier<br><em>entdecken.</em></h1>
+    <p class="hero-intro">Dein Wegweiser durchs Güterbahnhof-Areal – mit Orten, Adressen und allem, was es hier zu entdecken gibt.</p>
+    <div class="hero-actions">
+      <a class="button button-dark" href="{{.BasePath}}/places/">Orte entdecken <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="{{.BasePath}}/map/">Zur Quartierskarte <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+    <div class="track track-one"></div>
+    <div class="track track-two"></div>
+    <div class="track track-three"></div>
+    <span class="art-label">47°59' N<br>7°51' O</span>
+    <span class="art-stamp">VIEL<br>RAUM<br>FÜR NEUES</span>
+  </div>
+</section>
+<section class="intro-strip" aria-label="Über das Quartier">
+  <span class="strip-number">01 / 03</span>
+  <p>Ein neues Stück Freiburg. <strong>Ein Quartier voller Möglichkeiten.</strong></p>
+  <span class="strip-tag">GÜTERBAHNHOF</span>
+</section>
+<section class="home-discover">
+  <div class="section-heading">
+    <div><p class="eyebrow">VOR ORT</p><h2>Finde deinen<br><em>Lieblingsort.</em></h2></div>
+    <a class="text-link" href="{{.BasePath}}/places/">Alle Orte <span aria-hidden="true">→</span></a>
+  </div>
+  {{if .Places}}
+  <div class="place-grid">
+    {{range .Places}}
+    <a class="place-card" href="{{.URL}}">
+      <span class="place-card-index">{{.Index}}</span>
+      <span class="place-category">{{.Category}}</span>
+      <strong>{{.Name}}</strong>
+      <span class="place-address">{{.Address}}</span>
+      <span class="card-arrow" aria-hidden="true">↗</span>
+    </a>
+    {{end}}
+  </div>
+  {{else}}
+  <div class="empty-state">
+    <span class="empty-symbol" aria-hidden="true">✳</span>
+    <div><h3>Hier entsteht ein neuer Wegweiser.</h3><p>Die ersten Orte werden gerade gesammelt. Schau bald wieder vorbei oder erkunde schon einmal das Quartier auf der Karte.</p></div>
+    <a href="{{.BasePath}}/map/" class="text-link">Karte ansehen <span aria-hidden="true">→</span></a>
+  </div>
+  {{end}}
+</section>
+<section class="map-callout">
+  <div class="map-callout-copy">
+    <p class="eyebrow">FINDE DICH ZURECHT</p>
+    <h2>Das Quartier<br>auf einen <em>Blick.</em></h2>
+    <p>Entdecke das Gebiet und finde heraus, was in deiner Nähe liegt.</p>
+    <a class="button button-light" href="{{.BasePath}}/map/">Karte öffnen <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="map-callout-art" aria-hidden="true">
+    <div class="mini-grid"></div><span class="mini-pin">G</span><span class="mini-caption">DU BIST HIER</span>
+    <span class="mini-line mini-line-a"></span><span class="mini-line mini-line-b"></span>
+  </div>
+</section>
+{{end}}

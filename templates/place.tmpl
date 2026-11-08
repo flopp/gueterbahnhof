@@ -1,0 +1,23 @@
+{{define "place-content"}}
+<article class="detail-page">
+  <a class="back-link" href="{{.BasePath}}/places/">← Alle Orte</a>
+  <header class="detail-heading">
+    <p class="eyebrow"><span class="eyebrow-dot"></span> {{.Place.Category}}</p>
+    <h1>{{.Place.Name}}</h1>
+    <p class="detail-address">{{.Place.Address}}</p>
+  </header>
+  <div class="detail-layout">
+    <div class="detail-main">
+      {{if .Place.Description}}<section class="detail-section"><h2>Über diesen Ort</h2><p>{{.Place.Description}}</p></section>{{end}}
+      {{if .Place.Images}}<div class="detail-images">{{range .Place.Images}}<figure><img src="{{$.BasePath}}/static/{{.Path}}" alt="{{.Alt}}" loading="lazy"></figure>{{end}}</div>{{end}}
+    </div>
+    <aside class="detail-aside">
+      {{if .Place.OpeningHours}}<section class="detail-fact"><h2>Öffnungszeiten</h2><ul>{{range .Place.OpeningHours}}<li>{{.}}</li>{{end}}</ul></section>{{end}}
+      {{if .Place.Website}}<section class="detail-fact"><h2>Website</h2><a href="{{.Place.Website}}" rel="noopener noreferrer">{{.Place.Website}}</a></section>{{end}}
+      {{if .Place.Phone}}<section class="detail-fact"><h2>Telefon</h2><a href="tel:{{.Place.PhoneHref}}">{{.Place.Phone}}</a></section>{{end}}
+      {{if .Place.HasCoordinates}}<a class="button button-dark detail-map-link" href="{{.BasePath}}/map/">Auf der Karte ansehen <span aria-hidden="true">↗</span></a>{{end}}
+    </aside>
+  </div>
+  {{if .Place.LastVerified}}<p class="verified-note">Angaben zuletzt geprüft: {{.Place.LastVerifiedGerman}}</p>{{end}}
+</article>
+{{end}}

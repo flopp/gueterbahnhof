@@ -1,0 +1,38 @@
+{{define "layout"}}<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="{{.Description}}">
+  <title>{{.Title}} · Güterbahnhof Freiburg</title>
+  {{if .MapPage}}<link rel="stylesheet" href="{{.BasePath}}/static/vendor/leaflet/leaflet.css">{{end}}
+  <link rel="stylesheet" href="{{.BasePath}}/static/css/site.css">
+  {{if .MapPage}}<link rel="stylesheet" href="{{.BasePath}}/static/css/map.css">{{end}}
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{.BasePath}}/" aria-label="Güterbahnhof Freiburg – Startseite">
+        <span class="brand-mark" aria-hidden="true">G</span>
+        <span class="brand-name">Güterbahnhof<span>Freiburg im Breisgau</span></span>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="{{.BasePath}}/places/">Orte</a>
+        <a href="{{.BasePath}}/map/">Karte</a>
+      </nav>
+    </div>
+  </header>
+  <main id="inhalt">
+    {{.Content}}
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Ein Wegweiser durchs Quartier Güterbahnhof.</span>
+      <a href="{{.BasePath}}/places/">Alle Orte ansehen</a>
+    </div>
+  </footer>
+  {{if .MapPage}}<script src="{{.BasePath}}/static/vendor/leaflet/leaflet.js"></script><script src="{{.BasePath}}/static/js/map.js" defer></script>{{end}}
+</body>
+</html>{{end}}
