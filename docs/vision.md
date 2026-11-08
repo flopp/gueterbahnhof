@@ -3,8 +3,10 @@ Hyper-local information website for Freiburg's new "Quartier Güterbahnhof" area
 Planned features:
 
 - map view of the area
+- interactive map based on Leaflet and OpenStreetMap
 - directory of local shops, restaurants, other amenities
 - details page for each amenity (description, opening hours, some pictures, etc.)
+- German as the primary language
 
 Considerations:
 - It should be easy to add and modify amenity entries (first by modifying/adding files to the repositotry; later: by using an admin backend)
