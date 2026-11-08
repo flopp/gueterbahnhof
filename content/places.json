@@ -10,6 +10,17 @@
         "latitude": 48.013254,
         "longitude": 7.850022
       }
+    },
+    {
+      "slug": "dm-markt",
+      "name": "dm-Markt",
+      "category": "Drogerie",
+      "address": "Ellen-Gottlieb-Straße 2, 79106 Freiburg",
+      "website": "https://www.dm.de/store/d4bj/freiburg-im-breisgau/ellen-gottlieb-strasse-2",
+      "coordinates": {
+        "latitude": 48.0132066,
+        "longitude": 7.8486772
+      }
     }
   ]
 }

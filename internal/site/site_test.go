@@ -22,6 +22,11 @@ func TestGenerateBuildsStaticPages(t *testing.T) {
     "address": "Teststraße 1, Freiburg",
     "coordinates": {"latitude": 48.01, "longitude": 7.84},
     "lastVerified": "2026-11-08"
+  }, {
+    "slug": "ohne-koordinaten",
+    "name": "Ohne Koordinaten",
+    "category": "Kultur",
+    "address": "Teststraße 2, Freiburg"
   }]
 }`
 	if err := os.WriteFile(contentPath, []byte(content), 0o600); err != nil {
@@ -52,6 +57,12 @@ func TestGenerateBuildsStaticPages(t *testing.T) {
 		},
 		"places/test-ort/index.html": {
 			"Angaben zuletzt geprüft: 08.11.2026", "&lt;script&gt;alert(1)&lt;/script&gt;",
+			"Standort", "id=\"place-map\"", "data-lat=\"48.01\"", "data-lon=\"7.84\"",
+			"/quartier/static/js/place-map.js",
+			"OpenStreetMap-Kartenkacheln",
+		},
+		"places/ohne-koordinaten/index.html": {
+			"Ohne Koordinaten",
 		},
 		"map/index.html": {
 			"data-tile-url=\"https://tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png\"",
@@ -72,6 +83,15 @@ func TestGenerateBuildsStaticPages(t *testing.T) {
 			if !strings.Contains(string(data), snippet) {
 				t.Errorf("%s does not contain %q", name, snippet)
 			}
+		}
+	}
+	unlocatedPage, err := os.ReadFile(filepath.Join(output, "places", "ohne-koordinaten", "index.html"))
+	if err != nil {
+		t.Fatalf("read generated unlocated place: %v", err)
+	}
+	for _, unexpected := range []string{"id=\"place-map\"", "leaflet.css", "place-map.js"} {
+		if strings.Contains(string(unlocatedPage), unexpected) {
+			t.Errorf("unlocated place page unexpectedly contains %q", unexpected)
 		}
 	}
 }

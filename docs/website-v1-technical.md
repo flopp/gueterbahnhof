@@ -155,8 +155,8 @@ changes.
 - Use shared layout and partial templates to keep navigation and metadata
   consistent.
 - Self-host the pinned Leaflet 1.9.4 release and its CSS/assets rather than
-  depending on a third-party JavaScript CDN. Load the map code only on the map
-  page.
+  depending on a third-party JavaScript CDN. Load map code on the map page and
+  on place detail pages only when coordinates are available.
 - Use an OpenStreetMap-based tile service for interactive tiles. Make its URL
   configurable without rebuilding templates, and follow that provider's
   current usage policy, caching requirements, and attribution rules. Do not
@@ -169,6 +169,8 @@ changes.
   from the source repository at runtime.
 - Initialize Leaflet only when the map container exists. Provide a visible
   German fallback message if tile loading fails; do not hide the place list.
+- On a place detail page with coordinates, center a single marker on that
+  place. Omit the detail map when coordinates are unavailable.
 - Include visible map attribution identifying OpenStreetMap and the selected
   tile provider, with links where required by their policies.
 - Provide useful page titles and descriptions; use canonical URLs only after a

@@ -11,3 +11,10 @@
 .map-status { position: absolute; z-index: 500; top: 18px; left: 50%; max-width: calc(100% - 36px); padding: 10px 14px; margin: 0; color: #1d2722; background: #fffdf6; border: 1px solid #d7d2c8; box-shadow: 0 2px 8px #1d272222; font-size: 11px; transform: translateX(-50%); }
 .map-status[hidden] { display: none; }
 .custom-marker { display: block; width: 18px; height: 18px; border: 3px solid #fff; border-radius: 50%; background: #e36642; box-shadow: 0 1px 5px #1d272266; }
+.detail-map { padding-top: 48px; }
+.detail-map > h2 { margin: 0 0 16px; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; }
+.place-map-frame { position: relative; padding: 8px; border: 1px solid #d7d2c8; background: #fffdf6; }
+#place-map { height: 360px; min-height: 280px; }
+.place-map-attribution { margin: 10px 0 0; color: #737870; font-size: 10px; }
+.place-map-attribution a { color: inherit; }
+@media (max-width: 760px) { .detail-map { padding-top: 34px; } #place-map { height: 300px; } }

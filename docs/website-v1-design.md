@@ -77,6 +77,8 @@ initial map view to that boundary, with enough surrounding context to orient
 visitors. Selecting a marker opens a concise place summary with a link to its
 detail page. The map also has a readable list of place links that works without
 JavaScript and provides an accessible alternative to interacting with the map.
+Place detail pages also show a map centered on that place when verified
+coordinates are available; places without coordinates omit the map.
 
 **Reasoning:** An interactive map makes location and nearby amenities easier
 to explore while preserving static hosting. A parallel text list keeps place

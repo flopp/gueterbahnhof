@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#f5f2eb">
   <meta name="description" content="{{.Description}}">
   <title>{{.Title}} · Güterbahnhof Freiburg</title>
-  {{if .MapPage}}<link rel="stylesheet" href="{{.BasePath}}/static/vendor/leaflet/leaflet.css">{{end}}
+  {{if or .MapPage .PlaceMap}}<link rel="stylesheet" href="{{.BasePath}}/static/vendor/leaflet/leaflet.css">{{end}}
   <link rel="stylesheet" href="{{.BasePath}}/static/css/site.css">
-  {{if .MapPage}}<link rel="stylesheet" href="{{.BasePath}}/static/css/map.css">{{end}}
+  {{if or .MapPage .PlaceMap}}<link rel="stylesheet" href="{{.BasePath}}/static/css/map.css">{{end}}
 </head>
 <body>
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
@@ -33,6 +33,8 @@
       <a href="{{.BasePath}}/places/">Alle Orte ansehen</a>
     </div>
   </footer>
-  {{if .MapPage}}<script src="{{.BasePath}}/static/vendor/leaflet/leaflet.js"></script><script src="{{.BasePath}}/static/js/map.js" defer></script>{{end}}
+  {{if or .MapPage .PlaceMap}}<script src="{{.BasePath}}/static/vendor/leaflet/leaflet.js"></script>{{end}}
+  {{if .MapPage}}<script src="{{.BasePath}}/static/js/map.js" defer></script>{{end}}
+  {{if .PlaceMap}}<script src="{{.BasePath}}/static/js/place-map.js" defer></script>{{end}}
 </body>
 </html>{{end}}

@@ -84,6 +84,7 @@ type pageData struct {
 	Title              string
 	Description        string
 	MapPage            bool
+	PlaceMap           bool
 	TileURL            string
 	TileAttribution    string
 	TileAttributionURL string
@@ -161,10 +162,14 @@ func Generate(cfg Config) error {
 		view := makePlaceView(place, i+1, basePath)
 		views = append(views, view)
 		if err := renderPage(tmpl, "place-content", filepath.Join(cfg.OutputDir, "places", place.Slug, "index.html"), pageData{
-			BasePath:    basePath,
-			Title:       place.Name,
-			Description: place.Name + " im Quartier Güterbahnhof in Freiburg.",
-			Place:       view,
+			BasePath:           basePath,
+			Title:              place.Name,
+			Description:        place.Name + " im Quartier Güterbahnhof in Freiburg.",
+			PlaceMap:           view.HasCoordinates,
+			TileURL:            cfg.TileURL,
+			TileAttribution:    cfg.TileAttribution,
+			TileAttributionURL: cfg.TileAttributionURL,
+			Place:              view,
 		}); err != nil {
 			return err
 		}

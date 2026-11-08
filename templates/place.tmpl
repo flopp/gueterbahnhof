@@ -18,6 +18,21 @@
       {{if .Place.HasCoordinates}}<a class="button button-dark detail-map-link" href="{{.BasePath}}/map/">Auf der Karte ansehen <span aria-hidden="true">↗</span></a>{{end}}
     </aside>
   </div>
+  {{if .Place.HasCoordinates}}
+  <section class="detail-map" aria-labelledby="place-map-heading">
+    <h2 id="place-map-heading">Standort</h2>
+    <div class="place-map-frame">
+      <div id="place-map" role="region" aria-label="Karte mit dem Standort von {{.Place.Name}}"
+        data-tile-url="{{.TileURL}}"
+        data-lat="{{.Place.Latitude}}"
+        data-lon="{{.Place.Longitude}}">
+        <p class="map-fallback">Die Standortkarte wird geladen.</p>
+      </div>
+      <p id="place-map-status" class="map-status" role="status" hidden></p>
+    </div>
+    <p class="place-map-attribution">Kartenkacheln: <a href="{{.TileAttributionURL}}" rel="noopener noreferrer">{{.TileAttribution}}</a></p>
+  </section>
+  {{end}}
   {{if .Place.LastVerified}}<p class="verified-note">Angaben zuletzt geprüft: {{.Place.LastVerifiedGerman}}</p>{{end}}
 </article>
 {{end}}
